@@ -1,4 +1,5 @@
-package Restaurant;
+package org.launchcode;
+
 
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ public class MenuItem {
     private String category; // e.g., appetizer, main course, dessert
     private boolean isNew; // indicates if the menu item is new
 
+
     // Constructor
     public MenuItem(String name, double price, String description, String category, boolean isNew) {
         this.name = name;
@@ -17,6 +19,7 @@ public class MenuItem {
         this.category = category;
         this.isNew = isNew;
     }
+
 
     // Getters and setters
     public String getName() {
@@ -58,4 +61,25 @@ public class MenuItem {
     public void setNew(boolean aNew) {
         isNew = aNew;
     }
+
+    @Override
+    public String toString() {
+        return name + " (" + category + ") - $" + price + "\nDescription: " + description +
+                (isNew ? " - NEW!" : "");
+    }
+
+    // equals and hashCode methods for comparison
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return name.equals(menuItem.name) && category.equals(menuItem.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, category);
+    }
 }
+

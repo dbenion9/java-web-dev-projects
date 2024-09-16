@@ -1,7 +1,8 @@
-package Restaurant;
+package org.launchcode;
 
 import java.util.ArrayList;
 import java.util.Date;
+
 
 public class Menu {
     private ArrayList<MenuItem> menuItems;
@@ -14,7 +15,7 @@ public class Menu {
     }
 
     // Method to add a menu item
-    public void addMenuItem(MenuItem item) {
+    public void addItem(MenuItem item) {
         if (!menuItems.contains(item)) {
             menuItems.add(item);
             updateLastUpdated(); // update the menu's last updated date
@@ -22,7 +23,7 @@ public class Menu {
     }
 
     // Method to remove a menu item
-    public void removeMenuItem(MenuItem item) {
+    public void removeItem(MenuItem item) {
         menuItems.remove(item);
         updateLastUpdated(); // update the menu's last updated date
     }
@@ -53,4 +54,13 @@ public class Menu {
             }
         }
     }
+    @Override
+    public String toString() {
+        StringBuilder appetizers = new StringBuilder();
+        for (MenuItem item : menuItems) {
+                appetizers.append("\n").append(item.toString()).append("\n");
+            }
+        return "\n SAUCY PORKA APPETIZERS" + appetizers;
+    }
 }
+
